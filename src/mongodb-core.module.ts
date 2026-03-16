@@ -1,4 +1,10 @@
-import {Global, Module, type DynamicModule, type FactoryProvider, type OnApplicationShutdown} from '@nestjs/common';
+import {
+    Global,
+    Module,
+    type DynamicModule,
+    type FactoryProvider,
+    type OnApplicationShutdown
+} from '@nestjs/common';
 import type {MongodbOptions} from './mongodb.types';
 import {Db, MongoClient} from 'mongodb';
 
@@ -45,7 +51,8 @@ export class MongodbCoreModule implements OnApplicationShutdown{
                     return client;
 
                 client = new MongoClient(`mongodb://${options.host}:${options.port}/${options.db}`, options.clientOptions);
-                await client.connect();
+                if(options.autoConnect)
+                    await client.connect();
 
                 return client;
             }

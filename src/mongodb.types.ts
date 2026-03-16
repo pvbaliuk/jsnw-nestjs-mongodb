@@ -5,4 +5,5 @@ export type MongodbOptions = {
     port: number;
     db: string;
     clientOptions?: MongoClientOptions;
+    autoConnect?: boolean;
 };
