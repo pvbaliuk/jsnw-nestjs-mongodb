@@ -1,0 +1,59 @@
+{
+  "name": "@jsnw/nestjs-mongodb",
+  "version": "0.0.1",
+  "description": "NestJS module for Mongodb integration",
+  "main": "./dist/lib/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/lib/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "./dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pvbaliuk/jsnw-nestjs-mongodb"
+  },
+  "bugs": {
+    "url": "https://github.com/pvbaliuk/jsnw-nestjs-mongodb/issues"
+  },
+  "homepage": "https://github.com/pvbaliuk/jsnw-nestjs-mongodb#readme",
+  "keywords": [
+    "nestjs",
+    "mongodb"
+  ],
+  "author": {
+    "name": "Pavlo Baliuk",
+    "email": "jsnow0177@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.1.14",
+    "@nestjs/core": "^11.1.14",
+    "mongodb": "^7.1.0"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^11.1.14",
+    "@nestjs/core": "^11.1.14",
+    "jest": "^30.2.0",
+    "mongodb": "^7.1.0",
+    "rimraf": "^6.1.3",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
+  }
+}
