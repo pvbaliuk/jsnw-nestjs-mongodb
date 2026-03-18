@@ -13,3 +13,14 @@ export function coerceObjectId(id: string|ObjectId): ObjectId{
 
     throw new TypeError(`Invalid argument "id". Expected string, ObjectId, Uint8Array, got: ${typeof id}`);
 }
+
+/**
+ * @param {object} o
+ * @return {object}
+ */
+export function stripUndefinedFields(o: object): object{
+    return Object.fromEntries(
+        Object.entries(o)
+            .filter(([k, v]) => v !== undefined)
+    );
+}
