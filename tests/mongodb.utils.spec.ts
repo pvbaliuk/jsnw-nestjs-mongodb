@@ -15,5 +15,23 @@ describe('utils', () => {
 
             expect(stripUndefinedFields(before)).toEqual(after);
         });
+
+        it('returns empty object if empty object was provided', () => {
+            const before = {};
+            expect(stripUndefinedFields(before)).toEqual({})
+        });
+
+        it('returns empty object if all fields were stripped', () => {
+            const before = {a: undefined, b: undefined, c: undefined},
+                after = {};
+
+            expect(stripUndefinedFields(before)).toEqual(after)
+        });
+
+        test.each([123, "hello", false, true, [1, 2, 3]])('throws error if non-object value was provided (%p)', (v) => {
+            const t = () => stripUndefinedFields(v as any)
+
+            expect(t).toThrow(TypeError)
+        });
     });
 });

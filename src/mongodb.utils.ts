@@ -19,6 +19,13 @@ export function coerceObjectId(id: string|ObjectId): ObjectId{
  * @return {object}
  */
 export function stripUndefinedFields(o: object): object{
+    if(typeof o !== 'object' || o === null)
+        throw new TypeError(`Invalid argument type`);
+
+    const proto = Object.getPrototypeOf(o)
+    if(proto !== Object.prototype && proto !== null)
+        throw new TypeError(`Invalid argument type`);
+
     return Object.fromEntries(
         Object.entries(o)
             .filter(([k, v]) => v !== undefined)
